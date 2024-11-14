@@ -41,13 +41,8 @@ jobs:
       run: pipenv install 
 
     - name: Build and start services with Docker Compose
-      run: |
-        docker-compose -f docker-compose.yml up -d
-      working-directory: ./
-
-    - name: Run integration tests
-      run: pipenv run pytest 
-      working-directory: ./
+      run: docker-compose up --abort-on-container-exit --exit-code-from test_runner
+      working-directory: ./   
 
     - name: Tear down services
       if: always()
