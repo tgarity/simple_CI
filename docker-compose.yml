@@ -17,6 +17,18 @@ services:
     networks:
       - calc-network
 
+  test_runner:
+    image: python:3.8
+    volumes:
+      - .:/app
+    working_dir: /app
+    command: ["pipenv", "run", "pytest", "integration_test/test_integration.py"]
+    networks:
+      - calc-network
+    depends_on:
+      - add_service
+      - multiply_service
+
 networks:
   calc-network:
     driver: bridge

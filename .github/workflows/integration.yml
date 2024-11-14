@@ -1,6 +1,12 @@
 name: Multi-Container Integration Test
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - docker_2
+  pull_request:
+    branches:
+      - docker_2
 
 jobs:
   test:
