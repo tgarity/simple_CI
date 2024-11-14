@@ -22,8 +22,6 @@ services:
       context: .
       dockerfile: test_runner/Dockerfile
     volumes:
-      - ./Pipfile:/app/Pipfile  # Mount only the Pipfile
-      - ./Pipfile.lock:/app/Pipfile.lock  # Mount Pipfile.lock for dependency caching
       - ./integration_test:/app/integration_test  # Mount only the test code
     working_dir: /app
     command: ["pipenv", "run", "pytest", "integration_test/test_integration.py"]
