@@ -9,6 +9,6 @@ class OperationInput(BaseModel):
 
 @app.post("/add")
 async def add(input_data: OperationInput):
-    result = input_data.a * input_data.b
+    result = input_data.a + input_data.b
     return {"result": result}
 
